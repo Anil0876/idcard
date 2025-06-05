@@ -1,404 +1,390 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Koption ID Card Generator - Updated Gap and Line</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Koption ID Card Generator - Thick Card with Dark Grey Shadow</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
-  body {
-    font-family: 'Montserrat', sans-serif;
-    background: #e9ebf0;
-    margin: 0; padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    color: #333;
-  }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #e9ebf0;
+            margin: 0; padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
 
-  h1 {
-    margin-bottom: 1rem;
-    color: #222;
-    font-size: 1.5rem;
-    text-align: center;
-  }
+        h1 {
+            margin-bottom: 1rem;
+            color: #222;
+            font-size: 1.5rem;
+            text-align: center;
+        }
 
-  .blue-box-container {
-    background: #fff;
-    border-radius: 16px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-    padding: 2rem 2.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    align-items: center;
-    color: #222;
-    user-select: none;
-    width: 280px;
-  }
+        .blue-box-container {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            padding: 2rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: center;
+            color: #222;
+            user-select: none;
+            width: 300px; /* Increased width for a thicker appearance */
+        }
 
-  .input-panel {
-    background: transparent;
-    padding: 0;
-    border-radius: 0;
-    box-shadow: none;
-    width: 100%;
-    font-size: 0.9rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-  }
+        .input-panel {
+            background: transparent;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            width: 100%;
+            font-size: 0.9rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
 
-  .input-group {
-    display: flex;
-    align-items: center;
-  }
+        .input-group {
+            display: flex;
+            align-items: center;
+        }
 
-  .input-group label {
-    flex: 0 0 120px;
-    margin: 0;
-    font-weight: 600;
-    color: #444;
-    font-size: 0.9rem;
-    user-select: none;
-  }
+        .input-group label {
+            flex: 0 0 120px;
+            margin: 0;
+            font-weight: 600;
+            color: #444;
+            font-size: 0.9rem;
+            user-select: none;
+        }
 
-  .input-group input[type="text"],
-  .input-group input[type="date"],
-  .input-group input[type="number"],
-  .input-group input[type="file"] {
-    flex: 1 1 auto;
-    padding: 0.4rem 0.6rem;
-    border: 1.5px solid #b0b5bf;
-    border-radius: 6px;
-    font-size: 0.9rem;
-    background: #f9faff;
-    color: #222;
-    transition: border-color 0.3s, background-color 0.3s;
-    box-sizing: border-box;
-  }
+        .input-group input[type="text"],
+        .input-group input[type="date"],
+        .input-group input[type="number"],
+        .input-group input[type="file"] {
+            flex: 1 1 auto;
+            padding: 0.4rem 0.6rem;
+            border: 1.5px solid #b0b5bf;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            background: #f9faff;
+            color: #222;
+            transition: border-color 0.3s, background-color 0.3s;
+            box-sizing: border-box;
+        }
 
-  .input-group input::placeholder {
-    color: #a0a5b7;
-    opacity: 1;
-  }
+        .input-group input::placeholder {
+            color: #a0a5b7;
+            opacity: 1;
+        }
 
-  .input-group input:focus {
-    outline: none;
-    border-color: #3a6ddb;
-    background: #e6ecff;
-    box-shadow: 0 0 8px #3a6ddb88;
-    color: #222;
-  }
+        .input-group input:focus {
+            outline: none;
+            border-color: #3a6ddb;
+            background: #e6ecff;
+            box-shadow: 0 0 8px #3a6ddb88;
+            color: #222;
+        }
 
-  .input-group input[type="file"] {
-    padding: 0.25rem 0.5rem;
-    cursor: pointer;
-  }
+        .input-group input[type="file"] {
+            padding: 0.25rem 0.5rem;
+            cursor: pointer;
+        }
 
-  .id-card {
-    position: relative;
-    width: 280px;
-    height: 360px;
-    border-radius: 15px;
-    color: #222;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
-    font-size: 11px;
-    display: flex;
-    flex-direction: column;
-    padding: 1.2rem 1.4rem 1.8rem 1.4rem;
-    box-sizing: border-box;
-    background:
-      radial-gradient(circle at 80% 20%, rgba(58,107,219,0.04) 0, transparent 40%),
-      radial-gradient(circle at 20% 80%, rgba(58,107,219,0.04) 0, transparent 40%),
-      repeating-conic-gradient(from 0deg, rgba(58,107,219,0.02) 0deg 6deg, transparent 6deg 12deg),
-      repeating-radial-gradient(circle at 50% 50%, rgba(58,107,219,0.02) 0, transparent 1px),
-      #fff;
-    background-blend-mode: overlay;
-    background-size: 120px 120px, 130px 130px, 40px 40px, 20px 20px, auto;
-    overflow: hidden;
-    align-items: center; /* center horizontally */
-    justify-content: center; /* center vertically */
-    text-align: center;
-  }
-  .id-card::before {
-    content: "";
-    position: absolute;
-    top: 220px;
-    left: 50%;
-    width: 190px;
-    height: 190px;
-    background-image: url('https://i.postimg.cc/8PTxnCYq/Screenshot-1947-03-13-at-5-45-16-PM.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    opacity: 0.2;
-    transform: translateX(-50%) translateY(-50%);
-    pointer-events: none;
-    z-index: 0;
-  }
-  .id-card::after {
-    content: "";
-    pointer-events: none;
-    position: absolute;
-    border-radius: 15px;
-    inset: 0;
-    border: 3px solid #3a6ddb;
-    mix-blend-mode: soft-light;
-    filter: drop-shadow(0 0 6px #3a6ddb66);
-    z-index: 2;
-  }
+        .id-card {
+            position: relative;
+            width: 300px; /* Increased width for a thicker appearance */
+            height: 400px; /* Increased height for a thicker appearance */
+            border-radius: 15px;
+            color: #222;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7); /* Dark grey shadow */
+            font-size: 11px;
+            display: flex;
+            flex-direction: column;
+            padding: 1.2rem 1.4rem 1.8rem 1.4rem;
+            box-sizing: border-box;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
 
-  .id-card-header {
-    position: relative;
-    text-align: center;
-    margin-bottom: 1rem;
-    z-index: 3;
-  }
-  .id-card-header img {
-    height: 35px;
-    max-width: 100%;
-    width: auto;
-    user-select: none;
-  }
+        .id-card::before {
+            content: "";
+            position: absolute;
+            top: 220px;
+            left: 50%;
+            width: 190px;
+            height: 190px;
+            background-image: url('https://i.postimg.cc/8PTxnCYq/Screenshot-1947-03-13-at-5-45-16-PM.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            opacity: 0.2;
+            transform: translateX(-50%) translateY(-50%);
+            pointer-events: none;
+            z-index: 0;
+        }
 
-  .photo-preview {
-    width: 85px;
-    height: 110px;
-    border: 2.5px solid #3a6ddb;
-    border-radius: 10px;
-    background: #f0f3ff;
-    overflow: hidden;
-    margin-bottom: 1rem;
-    box-shadow:
-      0 0 6px rgba(58, 107, 219, 0.7),
-      inset 0 0 8px rgba(0,0,0,0.05);
-    user-select: none;
-    position: relative;
-    z-index: 3;
-  }
-  .photo-preview img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    filter: drop-shadow(0 0 4px rgba(0,0,0,0.1));
-  }
+        .id-card-header {
+            position: relative;
+            text-align: center;
+            margin-bottom: 1rem;
+            z-index: 3;
+        }
 
-  .id-card-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    position: relative;
-    z-index: 3;
-    margin: 0 0 0 0;
-    max-width: 280px;
-    width: 100%;
-  }
+        .id-card-header img {
+            height: 35px;
+            max-width: 100%;
+            width: auto;
+            user-select: none;
+        }
 
-  .info-group {
-    width: 100%;
-    margin-bottom: 0.4rem; /* reduced gap to minimal */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+        .photo-preview {
+            width: 85px;
+            height: 110px;
+            border: 2.5px solid #3a6ddb;
+            border-radius: 10px;
+            background: #f0f3ff;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            box-shadow:
+                0 0 6px rgba(58, 107, 219, 0.7),
+                inset 0 0 8px rgba(0,0,0,0.05);
+            user-select: none;
+            position: relative;
+            z-index: 3;
+        }
 
-  .field-label {
-    font-weight: 600;
-    opacity: 0.75;
-    font-size: 10px;
-    letter-spacing: 0.5px;
-    color: #4a598a;
-    padding-bottom: 1px; /* smaller gap */
-    user-select: none;
-  }
+        .photo-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: drop-shadow(0 0 4px rgba(0,0,0,0.1));
+        }
 
-  .field-value {
-    font-weight: 700;
-    font-size: 12px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    line-height: 1.3;
-    letter-spacing: 0.6px;
-    color: #1b2e59;
-    text-align: center;
-    width: 100%;
-  }
+        .id-card-body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            position: relative;
+            z-index: 3;
+            margin: 0;
+            max-width: 280px;
+            width: 100%;
+        }
 
-  .line-separator {
-    width: 100%;
-    border-top: 1px solid rgba(58, 107, 219, 0.6);
-    margin: 8px 0 0 0; /* no top gap */
-  }
+        .info-group {
+            width: 100%;
+            margin-bottom: 0.4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-  .footer-signature {
-    padding-top: 6px; /* minimal padding */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3px;
-    font-size: 12px;
-    user-select: none;
-    position: relative;
-    z-index: 3;
-    color: #3a4a7c;
-    font-weight: 600;
-    text-align: center;
-  }
+        .field-label {
+            font-weight: 600;
+            opacity: 0.75;
+            font-size: 10px;
+            letter-spacing: 0.5px;
+            color: #4a598a;
+            padding-bottom: 1px;
+            user-select: none;
+        }
 
-  .footer-signature small {
-    font-weight: 400;
-    font-size: 10px;
-    color: #6780b6;
-  }
+        .field-value {
+            font-weight: 700;
+            font-size: 12px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.3;
+            letter-spacing: 0.6px;
+            color: #1b2e59;
+            text-align: center;
+            width: 100%;
+        }
 
-  button#downloadBtn {
-    margin-top: 2rem;
-    padding: 0.75rem 1.8rem;
-    font-size: 1.1rem;
-    font-weight: 700;
-    background: #3a6ddb;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s, box-shadow 0.3s;
-    user-select: none;
-    box-shadow: 0 4px 12px rgba(58, 109, 219, 0.7);
-  }
+        .line-separator {
+            width: 100%;
+            border-top: 1px solid rgba(58, 107, 219, 0.6);
+            margin: 8px 0 0 0;
+        }
 
-  button#downloadBtn:hover {
-    background: #2b4db0;
-    box-shadow: 0 6px 20px rgba(43, 77, 176, 0.9);
-  }
+        .footer-signature {
+            padding-top: 6px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            font-size: 12px;
+            user-select: none;
+            position: relative;
+            z-index: 3;
+            color: #3a4a7c;
+            font-weight: 600;
+            text-align: center;
+        }
 
-  @media (max-width: 700px) {
-    .blue-box-container {
-      width: 100%;
-      max-width: 360px;
-    }
-  }
-</style>
+        .footer-signature small {
+            font-weight: 400;
+            font-size: 10px;
+            color: #6780b6;
+        }
+
+        button#downloadBtn {
+            margin-top: 2rem;
+            padding: 0.75rem 1.8rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            background: #3a6ddb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            user-select: none;
+            box-shadow: 0 4px 12px rgba(58, 109, 219, 0.7);
+        }
+
+        button#downloadBtn:hover {
+            background: #2b4db0;
+            box-shadow: 0 6px 20px rgba(43, 77, 176, 0.9);
+        }
+
+        @media (max-width: 700px) {
+            .blue-box-container {
+                width: 100%;
+                max-width: 360px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <h1>Koption ID Card Generator</h1>
-  <div class="blue-box-container" role="region" aria-label="ID card generator input and preview">
-    <div class="input-panel" role="form" aria-label="ID Card input form">
-      <div class="input-group">
-        <label for="inputName">Name</label>
-        <input type="text" id="inputName" placeholder="Full Name" autocomplete="off" />
-      </div>
-      <div class="input-group">
-        <label for="inputDesignation">Designation</label>
-        <input type="text" id="inputDesignation" placeholder="Designation" autocomplete="off" />
-      </div>
-      <div class="input-group">
-        <label for="inputDOJ">Date of Joining</label>
-        <input type="date" id="inputDOJ" autocomplete="off" />
-      </div>
-      <div class="input-group">
-        <label for="inputPhoto">Upload Photo</label>
-        <input type="file" id="inputPhoto" accept="image/*" />
-      </div>
+    <h1>Koption ID Card Generator</h1>
+    <div class="blue-box-container" role="region" aria-label="ID card generator input and preview">
+        <div class="input-panel" role="form" aria-label="ID Card input form">
+            <div class="input-group">
+                <label for="inputName">Name</label>
+                <input type="text" id="inputName" placeholder="Full Name" autocomplete="off" />
+            </div>
+            <div class="input-group">
+                <label for="inputDesignation">Designation</label>
+                <input type="text" id="inputDesignation" placeholder="Designation" autocomplete="off" />
+            </div>
+            <div class="input-group">
+                <label for="inputDOJ">Date of Joining</label>
+                <input type="date" id="inputDOJ" autocomplete="off" />
+            </div>
+            <div class="input-group">
+                <label for="inputPhoto">Upload Photo</label>
+                <input type="file" id="inputPhoto" accept="image/*" />
+            </div>
+        </div>
+
+        <div class="id-card" id="idCard" aria-label="Employee ID Card preview" role="img" aria-live="polite">
+            <div class="id-card-header" id="cardCompanyName" aria-label="Company logo">
+                <img src="https://i.postimg.cc/8PTxnCYq/Screenshot-1947-03-13-at-5-45-16-PM.png" alt="Koption Logo" />
+            </div>
+
+            <div class="photo-preview" aria-label="Employee photo preview">
+                <img src="" alt="Employee photo" id="photoPreview" />
+            </div>
+
+            <div class="id-card-body">
+                <div class="info-group">
+                    <div class="field-label">Name</div>
+                    <div class="field-value" id="cardName" title="Full Name">Full Name</div>
+                </div>
+                <div class="info-group">
+                    <div class="field-label">Designation</div>
+                    <div class="field-value" id="cardDesignation" title="Designation">Designation</div>
+                </div>
+                <div class="info-group" style="margin-bottom:0;">
+                    <div class="field-label">Date of Joining</div>
+                    <div class="field-value" id="cardDOJ" title="Date of Joining">YYYY-MM-DD</div>
+                </div>
+                <div class="line-separator"></div>
+            </div>
+            <div class="footer-signature" aria-label="Authorized signature">
+                <div>Anil Kumar</div>
+                <small>CEO &amp; Founder</small>
+            </div>
+        </div>
     </div>
 
-    <div class="id-card" id="idCard" aria-label="Employee ID Card preview" role="img" aria-live="polite">
-      <div class="id-card-header" id="cardCompanyName" aria-label="Company logo">
-        <img src="https://i.postimg.cc/8PTxnCYq/Screenshot-1947-03-13-at-5-45-16-PM.png" alt="Koption Logo" />
-      </div>
+    <button id="downloadBtn" aria-label="Download ID Card as image">Download ID Card</button>
 
-      <div class="photo-preview" aria-label="Employee photo preview">
-        <img src="" alt="Employee photo" id="photoPreview" />
-      </div>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script>
+        const inputName = document.getElementById('inputName');
+        const inputDesignation = document.getElementById('inputDesignation');
+        const inputDOJ = document.getElementById('inputDOJ');
+        const inputPhoto = document.getElementById('inputPhoto');
 
-      <div class="id-card-body" >
-        <div class="info-group">
-          <div class="field-label">Name</div>
-          <div class="field-value" id="cardName" title="Full Name">Full Name</div>
-        </div>
-        <div class="info-group">
-          <div class="field-label">Designation</div>
-          <div class="field-value" id="cardDesignation" title="Designation">Designation</div>
-        </div>
-        <div class="info-group" style="margin-bottom:0;">
-          <div class="field-label">Date of Joining</div>
-          <div class="field-value" id="cardDOJ" title="Date of Joining">YYYY-MM-DD</div>
-        </div>
-        <div class="line-separator"></div>
-      </div>
-      <div class="footer-signature" aria-label="Authorized signature">
-        <div>Anil Kumar</div>
-        <small>CEO &amp; Founder</small>
-      </div>
-    </div>
-  </div>
+        const cardName = document.getElementById('cardName');
+        const cardDesignation = document.getElementById('cardDesignation');
+        const cardDOJ = document.getElementById('cardDOJ');
+        const photoPreview = document.getElementById('photoPreview');
 
-  <button id="downloadBtn" aria-label="Download ID Card as image">Download ID Card</button>
+        function updateCard() {
+            cardName.textContent = inputName.value.trim() || 'Full Name';
+            cardDesignation.textContent = inputDesignation.value.trim() || 'Designation';
 
-  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-  <script>
-    const inputName = document.getElementById('inputName');
-    const inputDesignation = document.getElementById('inputDesignation');
-    const inputDOJ = document.getElementById('inputDOJ');
-    const inputPhoto = document.getElementById('inputPhoto');
+            if (inputDOJ.value) {
+                const d = new Date(inputDOJ.value);
+                const yyyy = d.getFullYear();
+                let mm = d.getMonth() + 1;
+                let dd = d.getDate();
+                mm = mm < 10 ? '0' + mm : mm;
+                dd = dd < 10 ? '0' + dd : dd;
+                cardDOJ.textContent = `${yyyy}-${mm}-${dd}`;
+            } else {
+                cardDOJ.textContent = 'YYYY-MM-DD';
+            }
+        }
 
-    const cardName = document.getElementById('cardName');
-    const cardDesignation = document.getElementById('cardDesignation');
-    const cardDOJ = document.getElementById('cardDOJ');
-    const photoPreview = document.getElementById('photoPreview');
+        inputName.addEventListener('input', updateCard);
+        inputDesignation.addEventListener('input', updateCard);
+        inputDOJ.addEventListener('input', updateCard);
 
-    function updateCard() {
-      cardName.textContent = inputName.value.trim() || 'Full Name';
-      cardDesignation.textContent = inputDesignation.value.trim() || 'Designation';
+        inputPhoto.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    photoPreview.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            } else {
+                photoPreview.src = "";
+            }
+        });
 
-      if(inputDOJ.value){
-        const d = new Date(inputDOJ.value);
-        const yyyy = d.getFullYear();
-        let mm = d.getMonth() + 1;
-        let dd = d.getDate();
-        mm = mm < 10 ? '0' + mm : mm;
-        dd = dd < 10 ? '0' + dd : dd;
-        cardDOJ.textContent = `${yyyy}-${mm}-${dd}`;
-      } else {
-        cardDOJ.textContent = 'YYYY-MM-DD';
-      }
-    }
+        updateCard();
 
-    inputName.addEventListener('input', updateCard);
-    inputDesignation.addEventListener('input', updateCard);
-    inputDOJ.addEventListener('input', updateCard);
+        const downloadBtn = document.getElementById('downloadBtn');
+        const idCard = document.getElementById('idCard');
 
-    inputPhoto.addEventListener('change', (e) => {
-      const file = e.target.files[0];
-      if(file && file.type.startsWith('image/')) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          photoPreview.src = e.target.result;
-        };
-        reader.readAsDataURL(file);
-      } else {
-        photoPreview.src = "";
-      }
-    });
-
-    updateCard();
-
-    const downloadBtn = document.getElementById('downloadBtn');
-    const idCard = document.getElementById('idCard');
-
-    downloadBtn.addEventListener('click', () => {
-      html2canvas(idCard, {backgroundColor: null, scale: 2}).then(canvas => {
-        const link = document.createElement('a');
-        link.download = (inputName.value.trim() || "ID_Card") + "_Koption.png";
-        link.href = canvas.toDataURL("image/png");
-        link.click();
-      });
-    });
-  </script>
+        downloadBtn.addEventListener('click', () => {
+            html2canvas(idCard, { backgroundColor: null, scale: 2 }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = (inputName.value.trim() || "ID_Card") + "_Koption.png";
+                link.href = canvas.toDataURL("image/png");
+                link.click();
+            });
+        });
+    </script>
 </body>
 </html>
